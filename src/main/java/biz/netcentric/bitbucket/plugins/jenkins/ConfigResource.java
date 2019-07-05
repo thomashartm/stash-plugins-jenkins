@@ -69,8 +69,8 @@ public class ConfigResource {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
 
-        return Response.ok(transactionTemplate.execute(new TransactionCallback() {
-            public Object doInTransaction() {
+        return Response.ok(transactionTemplate.execute(new TransactionCallback<Config>() {
+            public Config doInTransaction() {
                 PluginSettings settings = pluginSettingsFactory.createGlobalSettings();
                 Config config = new Config();
                 config.setUrl((String) settings.get(PLUGIN_KEY_URL));
@@ -87,7 +87,7 @@ public class ConfigResource {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
 
-        transactionTemplate.execute(new TransactionCallback() {
+        transactionTemplate.execute(new TransactionCallback<Object>() {
             public Object doInTransaction() {
                 PluginSettings pluginSettings = pluginSettingsFactory.createGlobalSettings();
                 pluginSettings.put(PLUGIN_KEY_URL, config.getUrl());

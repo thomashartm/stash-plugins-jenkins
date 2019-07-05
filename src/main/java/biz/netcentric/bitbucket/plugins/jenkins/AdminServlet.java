@@ -42,6 +42,11 @@ import com.atlassian.bitbucket.permission.PermissionService;
 @Component
 public class AdminServlet extends HttpServlet {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 8311967456943570033L;
+
     private static final String CONTENT_TYPE = "text/html;charset=utf-8";
 
     private static final String ADMIN_VM_TEMPLATE = "admin.vm";
